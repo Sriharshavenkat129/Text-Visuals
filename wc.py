@@ -13,6 +13,13 @@ text = ''
 
 # WordCloud visualization
 def visualize(text):
+    if "vmode" not in st.session_state:
+        st.session_state.vmode=None
+    col1=st.columns(1)
+    with col1:
+        if st.button("wordcloud"):
+            st.session_state="wc"
+    if st.session_state.vmode=='wc':
     wc = WordCloud(width=800, height=400, background_color='white').generate(text)
     fig, ax = plt.subplots()
     ax.imshow(wc, interpolation='bilinear')
