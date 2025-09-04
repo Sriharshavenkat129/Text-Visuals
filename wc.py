@@ -15,6 +15,7 @@ text = ''
 def visualize(text):
     we=WordCloud().generate(text)
     plt.imshow(we)
+    plt.show()
 
 # Read from PDF
 def read_from_pdf(iofile):
