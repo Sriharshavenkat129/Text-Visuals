@@ -94,6 +94,6 @@ if "vmode" not in st.session_state:
 col1=st.columns(1)[0]
 with col1:
     if st.button("wordcloud"):
-        st.session_state="wc"
+        st.session_state.vmode="wc"
 if st.session_state.vmode=='wc':
         visualize(text)
