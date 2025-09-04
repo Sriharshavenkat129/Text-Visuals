@@ -1,0 +1,5 @@
+matplotlib
+pyplot
+python-docx
+python-beautifulsoup4
+textblob
