@@ -3,7 +3,6 @@ import pdfplumber
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from docx import Document
-from textblob import TextBlob
 from bs4 import BeautifulSoup
 import io
 import requests
@@ -49,30 +48,32 @@ def read_from_url(url):
 st.title("🧠 WordCloud Generator")
 st.write("Choose your input mode to generate a word cloud from text, file, or URL.")
 
+# Safe session state initialization
 if "input_mode" not in st.session_state:
-    st.session_state.input_mode = None
+    st.session_state["input_mode"] = None
 if "vmode" not in st.session_state:
-    st.session_state.vmode = None
+    st.session_state["vmode"] = None
 
+# Input mode buttons
 button1, button2, button3 = st.columns(3)
 with button1:
     if st.button("Text Mode"):
-        st.session_state.input_mode = "text"
+        st.session_state["input_mode"] = "text"
 with button2:
     if st.button("File Mode"):
-        st.session_state.input_mode = "file"
+        st.session_state["input_mode"] = "file"
 with button3:
     if st.button("URL Mode"):
-        st.session_state.input_mode = "url"
+        st.session_state["input_mode"] = "url"
 
 # Text Mode
-if st.session_state.input_mode == "text":
+if st.session_state["input_mode"] == "text":
     user_text = st.text_area("Enter your text below:")
     if user_text:
         text = user_text
 
 # File Mode
-elif st.session_state.input_mode == "file":
+elif st.session_state["input_mode"] == "file":
     uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
     if uploaded_file:
         st.success(f"File uploaded: {uploaded_file.name}")
@@ -83,7 +84,7 @@ elif st.session_state.input_mode == "file":
             read_from_doc(iofile)
 
 # URL Mode
-elif st.session_state.input_mode == "url":
+elif st.session_state["input_mode"] == "url":
     url_input = st.text_input("Paste your URL here:")
     if url_input:
         st.success("URL received!")
@@ -94,7 +95,8 @@ elif st.session_state.input_mode == "url":
 col1 = st.columns(1)[0]
 with col1:
     if st.button("Generate WordCloud"):
-        st.session_state.vmode = "wc"
+        st.session_state["vmode"] = "wc"
 
-if st.session_state.vmode == 'wc' and text:
+# Display WordCloud
+if st.session_state["vmode"] == "wc" and text:
     visualize(text)
