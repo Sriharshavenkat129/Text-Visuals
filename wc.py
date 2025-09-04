@@ -13,12 +13,11 @@ text = ''
 
 # WordCloud visualization
 def visualize(text):
-        wc = WordCloud(width=800, height=400, background_color='white').generate(text)
-        fig, ax = plt.subplots()
-        ax.imshow(wc, interpolation='bilinear')
-        ax.axis("off")
-        st.pyplot(fig)
-
+    wc = WordCloud(width=800, height=400, background_color='white').generate(text)
+    fig, ax = plt.subplots()
+    ax.imshow(wc, interpolation='bilinear')
+    ax.axis("off")
+    st.pyplot(fig)
 
 # Read from PDF
 def read_from_pdf(iofile):
@@ -52,6 +51,8 @@ st.write("Choose your input mode to generate a word cloud from text, file, or UR
 
 if "input_mode" not in st.session_state:
     st.session_state.input_mode = None
+if "vmode" not in st.session_state:
+    st.session_state.vmode = None
 
 button1, button2, button3 = st.columns(3)
 with button1:
@@ -68,7 +69,7 @@ with button3:
 if st.session_state.input_mode == "text":
     user_text = st.text_area("Enter your text below:")
     if user_text:
-        text=user_text
+        text = user_text
 
 # File Mode
 elif st.session_state.input_mode == "file":
@@ -88,12 +89,12 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
-        
-if "vmode" not in st.session_state:
-        st.session_state["vmode"]=None
-col1=st.columns(1)[0]
+
+# WordCloud trigger
+col1 = st.columns(1)[0]
 with col1:
-    if st.button("wordcloud"):
-        st.session_state["vmode"]="wc"
-if st.session_state["vmode"]=='wc':
-        visualize(text)
+    if st.button("Generate WordCloud"):
+        st.session_state.vmode = "wc"
+
+if st.session_state.vmode == 'wc' and text:
+    visualize(text)
