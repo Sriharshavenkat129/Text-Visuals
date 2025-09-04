@@ -13,13 +13,6 @@ text = ''
 
 # WordCloud visualization
 def visualize(text):
-    if "vmode" not in st.session_state:
-        st.session_state.vmode=None
-    col1=st.columns(1)[0]
-    with col1:
-        if st.button("wordcloud"):
-            st.session_state="wc"
-    if st.session_state.vmode=='wc':
         wc = WordCloud(width=800, height=400, background_color='white').generate(text)
         fig, ax = plt.subplots()
         ax.imshow(wc, interpolation='bilinear')
@@ -36,7 +29,6 @@ def read_from_pdf(iofile):
             page_text = page.extract_text()
             if page_text:
                 text += page_text + "\n"
-    visualize(text)
 
 # Read from DOCX
 def read_from_doc(iofile):
@@ -44,7 +36,6 @@ def read_from_doc(iofile):
     text = ''
     doc = Document(iofile)
     text = ''.join([para.text for para in doc.paragraphs])
-    visualize(text)
 
 # Read from URL
 def read_from_url(url):
@@ -54,7 +45,6 @@ def read_from_url(url):
     soup = BeautifulSoup(response.text, 'html.parser')
     raw_text = soup.get_text()
     text = ''.join(c for c in raw_text if c != '\n' and (c.isalnum() or c.isspace()))
-    visualize(text)
 
 # Streamlit UI
 st.title("🧠 WordCloud Generator")
@@ -78,7 +68,7 @@ with button3:
 if st.session_state.input_mode == "text":
     user_text = st.text_area("Enter your text below:")
     if user_text:
-        visualize(user_text)
+        text=user_text
 
 # File Mode
 elif st.session_state.input_mode == "file":
@@ -98,3 +88,12 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
+        
+if "vmode" not in st.session_state:
+        st.session_state.vmode=None
+    col1=st.columns(1)[0]
+with col1:
+    if st.button("wordcloud"):
+        st.session_state="wc"
+if st.session_state.vmode=='wc':
+        visualize(text)
