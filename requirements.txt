@@ -1,4 +1,8 @@
-
+streamlit
+pdfplumber
+matplotlib
+wordcloud
 python-docx
-python-beautifulsoup4
 textblob
+beautifulsoup4
+requests
