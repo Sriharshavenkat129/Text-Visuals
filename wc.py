@@ -15,7 +15,7 @@ text = ''
 def visualize(text):
     if "vmode" not in st.session_state:
         st.session_state.vmode=None
-    col1=st.columns(1)
+    col1=st.columns(1)[0]
     with col1:
         if st.button("wordcloud"):
             st.session_state="wc"
