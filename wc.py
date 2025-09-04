@@ -20,11 +20,11 @@ def visualize(text):
         if st.button("wordcloud"):
             st.session_state="wc"
     if st.session_state.vmode=='wc':
-    wc = WordCloud(width=800, height=400, background_color='white').generate(text)
-    fig, ax = plt.subplots()
-    ax.imshow(wc, interpolation='bilinear')
-    ax.axis("off")
-    st.pyplot(fig)
+        wc = WordCloud(width=800, height=400, background_color='white').generate(text)
+        fig, ax = plt.subplots()
+        ax.imshow(wc, interpolation='bilinear')
+        ax.axis("off")
+        st.pyplot(fig)
 
 
 # Read from PDF
