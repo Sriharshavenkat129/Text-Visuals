@@ -13,9 +13,12 @@ text = ''
 
 # WordCloud visualization
 def visualize(text):
-    we=WordCloud().generate(text)
-    plt.imshow(we)
-    plt.show()
+    wc = WordCloud(width=800, height=400, background_color='white').generate(text)
+    fig, ax = plt.subplots()
+    ax.imshow(wc, interpolation='bilinear')
+    ax.axis("off")
+    st.pyplot(fig)
+
 
 # Read from PDF
 def read_from_pdf(iofile):
