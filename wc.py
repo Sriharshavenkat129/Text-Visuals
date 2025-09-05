@@ -94,7 +94,7 @@ elif st.session_state.input_mode == "url":
 if "vmode" not in st.session_state:
     st.session_state.vmode=None
 
-col1,col2=st.columns(1)[1]
+col1=st.columns(1)[0]
 with col1:
     if st.button("WordCloud"):
         visualize(text)
