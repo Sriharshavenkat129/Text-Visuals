@@ -24,7 +24,9 @@ def senvisualization(text):
 #freqencies with bar chart
 def fqvisualization(text):
      text_words = text.lower().split()
-     frequencies = Counter(text_words)
+     stopwords=["there","and","the","a","an","is","was","this","that","were"]
+     words=[word for word in text_words if word not in stopwords]
+     frequencies = Counter(words)
      labels, counts = zip(*frequencies.items())
      fig, ax = plt.subplots()
      ax.bar(labels, counts)
