@@ -7,7 +7,7 @@ from textblob import TextBlob
 from bs4 import BeautifulSoup
 import io
 import requests
-from collections import counter
+from collections import Counter
 
 # Global text variable
 text = ''
@@ -15,7 +15,7 @@ text = ''
 #freqencies with bar chart
 def fqvisualization(text):
     text_words=text.lower().split()
-    freqencies=counter(text_words)
+    freqencies=Counter(text_words)
     freq=dict(frequencies)
     labels,counts=freq.keys(),freq.values()
     plt.bar(labels,counts)
