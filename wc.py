@@ -90,4 +90,11 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
-visualize(text)
+
+if "vmode" not in st.session_state:
+    st.session_state.vmode=None
+
+col1,col2=st.columns(1)[1]
+with col1:
+    if st.button("WordCloud"):
+        visualize(text)
