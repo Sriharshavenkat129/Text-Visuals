@@ -124,3 +124,6 @@ with col1:
 with col2:
     if st.button("word frequencies"):
         fqvisualization(text)
+with col3:
+     if st.button("sentiment analysis"):
+          senvisualization(text)
