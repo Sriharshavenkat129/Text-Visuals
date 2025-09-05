@@ -18,7 +18,7 @@ def senvisualization(text):
      sentiments=[TextBlob(line).sentiment.polarity fro line in lines]
      counts=[sum(1 for s in sentiments if s>0.1),sum(1 for s in sentiments if s<-0.1), sum(1 for s in sentiments if -0.1<s<0.1)]
      fig,ax=plt.subplots(figsize=(10,5))
-     ax.pie(counts,labels=["positive","negative","neutral"],autopet="%1.1f%%)
+     ax.pie(counts,labels=["positive","negative","neutral"],autopet="%1.1f%%")
      st.pyplot(fig)
 
 #freqencies with bar chart
