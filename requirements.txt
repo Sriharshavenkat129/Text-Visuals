@@ -6,5 +6,5 @@ python-docx
 textblob
 beautifulsoup4
 requests
-counter
+Counter
 collections
