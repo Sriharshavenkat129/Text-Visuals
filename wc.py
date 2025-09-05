@@ -112,4 +112,4 @@ with col1:
         visualize(text)
 with col2:
     if st.button("word frequencies"):
-        
+        fqvisualization(text)
