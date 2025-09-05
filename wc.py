@@ -17,7 +17,7 @@ def senvisualization(text):
      lines=text.split('\n')
      sentiments=[TextBlob(line).sentiment.polarity for line in lines]
      counts=[sum(1 for s in sentiments if s>0.1),sum(1 for s in sentiments if s<-0.1), sum(1 for s in sentiments if -0.1<s<0.1)]
-     fig,ax=plt.subplots(figsize=(100,50))
+     fig,ax=plt.subplots()
      ax.pie(counts,labels=["positive","negative","neutral"],autopct="%1.1f%%")
      st.pyplot(fig)
 
@@ -26,7 +26,7 @@ def fqvisualization(text):
      text_words = text.lower().split()
      frequencies = Counter(text_words)
      labels, counts = zip(*frequencies.items())
-     fig, ax = plt.subplots(figsize=(100, 50))
+     fig, ax = plt.subplots()
      ax.bar(labels, counts)
      plt.xticks(rotation=90)
      st.pyplot(fig)
