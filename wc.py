@@ -14,13 +14,14 @@ text = ''
 
 #freqencies with bar chart
 def fqvisualization(text):
-    text_words=text.lower().split()
-    freqencies=Counter(text_words)
-    freq=dict(frequencies)
-    labels,counts=freq.keys(),freq.values()
-    plt.bar(labels,counts)
-    plt.xticks(rotatioin=90)
-    plt.show()
+    def fqvisualization(text):
+    text_words = text.lower().split()
+    frequencies = Counter(text_words)
+    labels, counts = zip(*frequencies.items())
+    fig, ax = plt.subplots(figsize=(10, 5))
+    ax.bar(labels, counts)
+    plt.xticks(rotation=90)
+    st.pyplot(fig)
     
 
 # WordCloud visualization
