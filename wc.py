@@ -7,9 +7,21 @@ from textblob import TextBlob
 from bs4 import BeautifulSoup
 import io
 import requests
+from collections import counter
 
 # Global text variable
 text = ''
+
+#freqencies with bar chart
+def fqvisualization(text):
+    text_words=text.lower().split()
+    freqencies=counter(text_words)
+    freq=dict(frequencies)
+    labels,counts=freq.keys(),freq.values()
+    plt.bar(labels,counts)
+    plt.xticks(rotatioin=90)
+    plt.show()
+    
 
 # WordCloud visualization
 def visualize(text):
@@ -94,11 +106,10 @@ elif st.session_state.input_mode == "url":
 if "vmode" not in st.session_state:
     st.session_state.vmode=None
 
-col1,col2=st.columns(2)
-#col2=st.columns(1)[0]
+col1,col2,col3=st.columns(3)
 with col1:
     if st.button("WordCloud"):
         visualize(text)
 with col2:
     if st.button("word frequencies"):
-        visualize(text)
+        
