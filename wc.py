@@ -12,6 +12,15 @@ from collections import Counter
 # Global text variable
 text = ''
 
+#sentiment visualization through piechart
+def senvisualization(text):
+     lines=text.split('\n')
+     sentiments=[TextBlob(line).sentiment.polarity fro line in lines]
+     counts=[sum(1 for s in sentiments if s>0.1),sum(1 for s in sentiments if s<-0.1), sum(1 for s in sentiments if -0.1<s<0.1)]
+     fig,ax=plt.subplots(figsize=(10,5))
+     ax.pie(counts,labels=["positive","negative","neutral"],autopet="%1.1f%%)
+     st.pyplot(fig)
+
 #freqencies with bar chart
 def fqvisualization(text):
      text_words = text.lower().split()
@@ -106,7 +115,9 @@ elif st.session_state.input_mode == "url":
 if "vmode" not in st.session_state:
     st.session_state.vmode=None
 
-col1,col2,col3=st.columns(3)
+col1=st.columns(1)[0]
+col2=st.columns(1)[0]
+col3=st.columns(1)[0]
 with col1:
     if st.button("WordCloud"):
         visualize(text)
