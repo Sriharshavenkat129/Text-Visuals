@@ -51,8 +51,7 @@ st.write("Choose your input mode to generate a word cloud from text, file, or UR
 
 if "input_mode" not in st.session_state:
     st.session_state.input_mode = None
-if "vmode" not in st.session_state:
-    st.session_state.vmode = None
+
 
 button1, button2, button3 = st.columns(3)
 with button1:
@@ -65,11 +64,7 @@ with button3:
     if st.button("URL Mode"):
         st.session_state.input_mode = "url"
 
-# WordCloud trigger button
-col_wc = st.columns(1)[0]
-with col_wc:
-    if st.button("Generate WordCloud"):
-        st.session_state.vmode = "wc"
+
 
 # Text Mode
 if st.session_state.input_mode == "text":
@@ -95,7 +90,4 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
-
-# Show WordCloud if triggered
-if st.session_state.vmode == "wc" and text:
-    visualize(text)
+visualize(text)
