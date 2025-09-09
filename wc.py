@@ -105,6 +105,8 @@ elif st.session_state.input_mode == "file":
             read_from_pdf(iofile)
         elif uploaded_file.name.endswith(".docx"):
             read_from_doc(iofile)
+        else :
+             st.error("Something went wrong. Please check your input. 🚨 (only pdf/docx available)")
 
 # URL Mode
 elif st.session_state.input_mode == "url":
