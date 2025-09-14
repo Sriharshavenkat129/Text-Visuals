@@ -43,6 +43,7 @@ def visualize(text):
     st.pyplot(fig)
 
 # Read from PDF
+"""
 def read_from_pdf(iofile):
     global text
     text = ''
@@ -68,6 +69,8 @@ def read_from_url(url):
     raw_text = soup.get_text()
     text = ''.join(c for c in raw_text if c != '\n' and (c.isalnum() or c.isspace()))
 
+    """
+
 # Streamlit UI
 st.title("🧠 WordCloud Generator")
 st.write("Choose your input mode to generate a word cloud from text, file, or URL.")
@@ -75,18 +78,21 @@ st.write("Choose your input mode to generate a word cloud from text, file, or UR
 if "input_mode" not in st.session_state:
     st.session_state.input_mode = None
 
-
-button1, button2, button3 = st.columns(3)
+"""
+button1, button2, button3= st.columns(1)
+"""
+button1 =st.columns(1);
 with button1:
     if st.button("Text Mode"):
         st.session_state.input_mode = "text"
+"""
 with button2:
     if st.button("File Mode"):
         st.session_state.input_mode = "file"
 with button3:
     if st.button("URL Mode"):
         st.session_state.input_mode = "url"
-
+"""
 
 
 # Text Mode
@@ -96,6 +102,7 @@ if st.session_state.input_mode == "text":
         text = user_text
 
 # File Mode
+"""
 elif st.session_state.input_mode == "file":
     uploaded_file = st.file_uploader("Upload a PDF or DOCX file", type=["pdf", "docx"])
     if uploaded_file:
@@ -115,6 +122,8 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
+
+"""
 
 if "vmode" not in st.session_state:
     st.session_state.vmode=None
