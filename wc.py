@@ -77,7 +77,7 @@ st.write("Choose your input mode to generate a word cloud from text, file, or UR
 if "input_mode" not in st.session_state:
     st.session_state.input_mode = None
 
-button1, button2, button3= st.columns(1)
+button1, button2, button3= st.columns(3)
 
 with button1:
     if st.button("Text Mode"):
