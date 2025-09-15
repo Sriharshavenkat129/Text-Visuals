@@ -112,7 +112,7 @@ elif st.session_state.input_mode == "file":
 # URL Mode
 elif st.session_state.input_mode == "url":
     url_input = st.text_input("Paste your URL here:")
-    if url_input:
+    if url_input and url_input.startswith("https"):
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
