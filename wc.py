@@ -116,7 +116,8 @@ elif st.session_state.input_mode == "url":
         st.success("URL received!")
         st.write(f"You entered: {url_input}")
         read_from_url(url_input)
-
+    else:
+         st.warning("enter a valid url") 
 
 
 if "vmode" not in st.session_state:
