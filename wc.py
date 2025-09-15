@@ -123,7 +123,7 @@ elif st.session_state.input_mode == "url":
 if text:
      st.subheader("choose visualization")
      option=st.radio("select one:",["word cloud","word frequency","sentiment analysis"])
-     if option=="world cloud":
+     if option=="word cloud":
           visualize(text)
      elif option=="word frequency":
           fqvisualization(text);
