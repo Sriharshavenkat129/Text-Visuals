@@ -120,17 +120,12 @@ elif st.session_state.input_mode == "url":
          st.warning("enter a valid url") 
 
 
-if "vmode" not in st.session_state:
-    st.session_state.vmode=None
-
-col1,col2,col3=st.columns(3)
-
-with col1:
-    if st.radio("WordCloud"):
-        visualize(text)
-with col2:
-    if st.radio("word frequencies"):
-        fqvisualization(text)
-with col3:
-     if st.radio("sentiment analysis"):
+if text:
+     st.subheader("choose visualization")
+     option=st.radio("select one:",["word cloud","word frequency","sentiment analysis"])
+     if option=="world cloud":
+          visualize(text)
+     else if option=="word frequency":
+          fqvisualization(text);
+     else if option=="sentiment analysis":
           senvisualization(text)
