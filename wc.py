@@ -123,14 +123,14 @@ elif st.session_state.input_mode == "url":
 if "vmode" not in st.session_state:
     st.session_state.vmode=None
 
-col1,col2,col3=st.columns(3)
+col1,col2,col3=st.ccolumns(3)
 
 with col1:
-    if st.button("WordCloud"):
+    if st.radio("WordCloud"):
         visualize(text)
 with col2:
-    if st.button("word frequencies"):
+    if st.radio("word frequencies"):
         fqvisualization(text)
 with col3:
-     if st.button("sentiment analysis"):
+     if st.radio("sentiment analysis"):
           senvisualization(text)
