@@ -125,7 +125,7 @@ if text:
      option=st.radio("select one:",["word cloud","word frequency","sentiment analysis"])
      if option=="world cloud":
           visualize(text)
-     else if option=="word frequency":
+     elif option=="word frequency":
           fqvisualization(text);
-     else if option=="sentiment analysis":
+     elif option=="sentiment analysis":
           senvisualization(text)
